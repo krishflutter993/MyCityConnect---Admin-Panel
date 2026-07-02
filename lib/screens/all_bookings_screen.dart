@@ -46,8 +46,10 @@ class _AllBookingsScreenState extends State<AllBookingsScreen> {
       context: context,
       builder: (_) => AlertDialog(
         backgroundColor: const Color(0xff1E293B),
-        title: const Text('Delete Booking', style: TextStyle(color: Colors.white)),
-        content: const Text('Are you sure you want to delete this booking?', style: TextStyle(color: Colors.white70)),
+        title:
+            const Text('Delete Booking', style: TextStyle(color: Colors.white)),
+        content: const Text('Are you sure you want to delete this booking?',
+            style: TextStyle(color: Colors.white70)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -64,10 +66,12 @@ class _AllBookingsScreenState extends State<AllBookingsScreen> {
     if (confirm == true) {
       try {
         await ApiService.deleteBooking(id);
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Booking Deleted Successfully')));
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Booking Deleted Successfully')));
         _loadBookings();
       } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(e.toString())));
       }
     }
   }
@@ -79,8 +83,11 @@ class _AllBookingsScreenState extends State<AllBookingsScreen> {
       context: context,
       builder: (_) => AlertDialog(
         backgroundColor: const Color(0xff1E293B),
-        title: const Text('Delete All Bookings', style: TextStyle(color: Colors.white)),
-        content: const Text('Are you sure you want to delete ALL bookings? This cannot be undone.', style: TextStyle(color: Colors.white70)),
+        title: const Text('Delete All Bookings',
+            style: TextStyle(color: Colors.white)),
+        content: const Text(
+            'Are you sure you want to delete ALL bookings? This cannot be undone.',
+            style: TextStyle(color: Colors.white70)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -88,7 +95,8 @@ class _AllBookingsScreenState extends State<AllBookingsScreen> {
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Delete All', style: TextStyle(color: Colors.red)),
+            child:
+                const Text('Delete All', style: TextStyle(color: Colors.red)),
           ),
         ],
       ),
@@ -98,7 +106,7 @@ class _AllBookingsScreenState extends State<AllBookingsScreen> {
       try {
         // Try deleting 'all' first if backend supports it
         await ApiService.deleteBooking('all');
-        
+
         // Loop through and delete each if 'all' didn't work as expected
         for (var b in bookings) {
           final id = b['id'];
@@ -107,10 +115,12 @@ class _AllBookingsScreenState extends State<AllBookingsScreen> {
           }
         }
 
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('All Bookings Deleted Successfully')));
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('All Bookings Deleted Successfully')));
         _loadBookings();
       } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(e.toString())));
         _loadBookings(); // reload to reflect any partial deletions
       }
     }
@@ -183,7 +193,7 @@ class _AllBookingsScreenState extends State<AllBookingsScreen> {
         final address = booking['address'] ?? '';
         final notes = booking['notes'] ?? '';
         final createdAt = booking['created_at'] ?? '';
-        
+
         return Container(
           margin: const EdgeInsets.only(bottom: 16),
           padding: const EdgeInsets.all(16),
@@ -225,15 +235,20 @@ class _AllBookingsScreenState extends State<AllBookingsScreen> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
-                      color: status.toLowerCase() == 'confirmed' ? Colors.green.withOpacity(0.2) : Colors.orange.withOpacity(0.2),
+                      color: status.toLowerCase() == 'confirmed'
+                          ? Colors.green.withOpacity(0.2)
+                          : Colors.orange.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
                       status,
                       style: GoogleFonts.poppins(
-                        color: status.toLowerCase() == 'confirmed' ? Colors.green : Colors.orange,
+                        color: status.toLowerCase() == 'confirmed'
+                            ? Colors.green
+                            : Colors.orange,
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                       ),
@@ -242,7 +257,8 @@ class _AllBookingsScreenState extends State<AllBookingsScreen> {
                   const SizedBox(width: 8),
                   GestureDetector(
                     onTap: () => _deleteSingleBooking(id),
-                    child: const Icon(Icons.delete_outline, color: Colors.redAccent),
+                    child: const Icon(Icons.delete_outline,
+                        color: Colors.redAccent),
                   ),
                 ],
               ),
@@ -264,7 +280,8 @@ class _AllBookingsScreenState extends State<AllBookingsScreen> {
                 const SizedBox(height: 8),
               ],
               if (bookingDate.isNotEmpty || bookingTime.isNotEmpty) ...[
-                _buildDetailRow(Icons.calendar_today, 'Booking', '$bookingDate at $bookingTime'),
+                _buildDetailRow(Icons.calendar_today, 'Booking',
+                    '$bookingDate at $bookingTime'),
                 const SizedBox(height: 8),
               ],
               if (notes.isNotEmpty) ...[

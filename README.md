@@ -1,4 +1,4 @@
-# MyCity Admin Panel (addminsaid_mycity)
+# MyCityConnect Admin Panel
 
 A comprehensive Flutter-based admin dashboard for managing city services, bookings, and user interactions. This application provides a powerful, visually appealing, and responsive interface for administrators to oversee the MyCity platform.
 
@@ -12,43 +12,23 @@ A comprehensive Flutter-based admin dashboard for managing city services, bookin
 - **Image Handling**: Seamless image selection and caching (`image_picker`, `cached_network_image`).
 - **Loading States**: Shimmer effects (`shimmer`) for smooth user experience during data fetch.
 
-## Project Structure
+## Technologies Used
 
-The project follows a standard Flutter architectural pattern for maintainability:
+- Flutter & Dart
+- Firebase (Cloud Firestore)
+- fl_chart (Data Visualizations)
+- google_fonts (Custom Typography)
+- glassmorphism (UI Effects)
+- cached_network_image & image_picker
 
-```
-lib/
-├── models/       # Data models representing domain entities
-├── screens/      # Full-page UI views (e.g., admin_panel_screen, add_service_screen)
-├── services/     # Business logic and external API/Firebase interactions
-├── utils/        # Helper functions, constants, and theme data
-├── widgets/      # Reusable UI components (e.g., service_card)
-└── main.dart     # Application entry point
-```
-
-## Dependencies
-
-Key packages used in this project:
-
-- `flutter`: The core UI framework.
-- `firebase_core` & `cloud_firestore`: Backend database and services.
-- `fl_chart`: For rendering insightful data visualizations on the dashboard.
-- `glassmorphism`: To create modern, frosted-glass UI elements.
-- `google_fonts`: Custom typography.
-- `cached_network_image`: Efficient image loading and caching.
-- `shimmer`: Skeleton loading animations.
-- `image_picker`: Selecting images for services or profiles.
-- `intl`: Internationalization and date formatting.
-- `http`: Network requests.
-
-## Getting Started
+## Installation
 
 To run this project locally:
 
 1. **Prerequisites**: Ensure you have Flutter installed (SDK `>=3.0.0 <4.0.0`).
 2. **Clone the repository**:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/krishflutter993/MyCityConnect---Admin-Panel.git
    cd addminsaid_mycity
    ```
 3. **Install dependencies**:
@@ -62,6 +42,30 @@ To run this project locally:
    flutter run
    ```
 
-## Design Aesthetics
+## Screenshots
 
-This admin panel prioritizes a rich, dynamic, and premium user experience. It avoids generic designs, instead opting for harmonious color palettes, modern typography, smooth gradients, and subtle micro-animations to create an engaging interface.
+*(Add screenshots of the admin dashboard here)*
+
+## Folder Structure
+
+The project follows a standard Flutter architectural pattern for maintainability:
+
+```
+lib/
+├── models/       # Data models representing domain entities
+├── screens/      # Full-page UI views (e.g., admin_panel_screen, add_service_screen)
+├── services/     # Business logic and external API/Firebase interactions
+├── utils/        # Helper functions, constants, and theme data
+├── widgets/      # Reusable UI components (e.g., service_card)
+└── main.dart     # Application entry point
+```
+
+## APK Download
+
+[![Download APK](https://img.shields.io/badge/Download-APK-blue?style=for-the-badge&logo=android)](https://github.com/krishflutter993/MyCityConnect---Admin-Panel/releases/latest/download/app-release.apk)
+
+https://github.com/krishflutter993/MyCityConnect---Admin-Panel/releases/latest/download/app-release.apk
+
+## GitHub Repository
+
+https://github.com/krishflutter993/MyCityConnect---Admin-Panel
