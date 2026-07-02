@@ -66,10 +66,12 @@ class _AllBookingsScreenState extends State<AllBookingsScreen> {
     if (confirm == true) {
       try {
         await ApiService.deleteBooking(id);
+        if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Booking Deleted Successfully')));
         _loadBookings();
       } catch (e) {
+        if (!mounted) return;
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text(e.toString())));
       }
@@ -115,10 +117,12 @@ class _AllBookingsScreenState extends State<AllBookingsScreen> {
           }
         }
 
+        if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('All Bookings Deleted Successfully')));
         _loadBookings();
       } catch (e) {
+        if (!mounted) return;
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text(e.toString())));
         _loadBookings(); // reload to reflect any partial deletions
@@ -198,10 +202,10 @@ class _AllBookingsScreenState extends State<AllBookingsScreen> {
           margin: const EdgeInsets.only(bottom: 16),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.05),
+            color: Colors.white.withValues(alpha: 0.05),
             borderRadius: BorderRadius.circular(18),
             border: Border.all(
-              color: Colors.white.withOpacity(0.1),
+              color: Colors.white.withValues(alpha: 0.1),
               width: 1,
             ),
           ),
@@ -239,8 +243,8 @@ class _AllBookingsScreenState extends State<AllBookingsScreen> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
                       color: status.toLowerCase() == 'confirmed'
-                          ? Colors.green.withOpacity(0.2)
-                          : Colors.orange.withOpacity(0.2),
+                          ? Colors.green.withValues(alpha: 0.2)
+                          : Colors.orange.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
@@ -289,7 +293,7 @@ class _AllBookingsScreenState extends State<AllBookingsScreen> {
                 const SizedBox(height: 8),
               ],
               const SizedBox(height: 4),
-              Divider(color: Colors.white.withOpacity(0.1)),
+              Divider(color: Colors.white.withValues(alpha: 0.1)),
               const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,

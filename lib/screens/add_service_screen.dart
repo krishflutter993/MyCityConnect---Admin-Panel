@@ -193,6 +193,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
         Navigator.pop(context, true);
       }
     } catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('❌ $e'),
@@ -447,7 +448,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                   )
                 : null,
             filled: true,
-            fillColor: Colors.white.withOpacity(0.08),
+            fillColor: Colors.white.withValues(alpha: 0.08),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(18),
               borderSide: BorderSide.none,
